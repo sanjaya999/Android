@@ -94,6 +94,40 @@
         android:textColorHint="@color/txt_white"
         app:layout_constraintTop_toBottomOf="@id/labelconfirPpassword" />
 
+    <TextView
+        android:id="@+id/genderTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gender"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/confirmPassword_area"/>
+
+    <RadioGroup
+        android:id="@+id/genderGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/genderTxt"
+        >
+       <RadioButton
+           android:id="@+id/checkMale"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Male"
+           android:textColor="@color/white"/>
+        <RadioButton
+            android:id="@+id/checkFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Female"
+            android:textColor="@color/white"
+
+            />
+
+    </RadioGroup>
+
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/SubmitBtn"
         android:layout_width="wrap_content"
@@ -101,7 +135,7 @@
         android:hint="Sign Up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/confirmPassword_area" />
+        app:layout_constraintTop_toBottomOf="@id/genderGroup" />
 
     <TextView
         android:id="@+id/accountExist"
@@ -114,6 +148,7 @@
         app:layout_constraintTop_toBottomOf="@id/SubmitBtn" />
 
     <TextView
+        android:id="@+id/goToLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/edt_button"

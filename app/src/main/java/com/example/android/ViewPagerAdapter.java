@@ -13,13 +13,13 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class vewpageAdapter extends FragmentPagerAdapter {
+public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     final List<Fragment> fragmentList = new ArrayList<>();
     final List<String>  fragmentTitle = new ArrayList<>();
 
 
-    public vewpageAdapter(@NonNull FragmentManager fm) {
+    public ViewPagerAdapter(@NonNull FragmentManager fm) {
         super(fm);
     }
 

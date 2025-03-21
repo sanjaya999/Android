@@ -1,6 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/Dark_Gray">
+    <include layout="@layout/toolbar"/>
+
+    <TextView
+        android:id="@+id/dashboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dashboard"
+        android:textColor="@color/white"
+        android:layout_marginVertical="65dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="50sp"
+        />
+    <TextView
+        android:id="@+id/wallpaper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wallpaper"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dashboard"
+        android:textSize="25sp"
+        />
+
+    <ImageView
+        android:id="@+id/treeImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/tree"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wallpaper" />
+
+    <TextView
+        android:id="@+id/treeImageName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tree"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@id/treeImage"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/treeImageDescription"
+        android:layout_width="200dp"
+        android:layout_height="35dp"
+        android:text=" Description:Nice Blue tree at night light below sky"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/treeImageName" />
+
+<!--    Image 2 with Description-->
+
+    <ImageView
+        android:id="@+id/studyingGirl"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/girlstudy"
+        app:layout_constraintStart_toEndOf="@id/treeImage"
+        app:layout_constraintTop_toBottomOf="@id/wallpaper"/>
+
+    <TextView
+        android:id="@+id/studyingGirlText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:text="studying Girl"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@id/treeImageName"
+        app:layout_constraintTop_toBottomOf="@id/studyingGirl" />
+
+    <TextView
+        android:id="@+id/studyingGirlDescription"
+        android:layout_width="200dp"
+        android:layout_height="35dp"
+        android:text="Description:Girl Sitting in chair and studying"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:layout_marginLeft="45dp"
+        app:layout_constraintStart_toEndOf="@id/treeImageDescription"
+        app:layout_constraintTop_toBottomOf="@id/treeImageName" />
+
+
+
+    <ImageView
+        android:id="@+id/natureGreenImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/nature"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/treeImageDescription" />
+
+    <TextView
+        android:id="@+id/natureGreenImageName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nature"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@id/natureGreenImage"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/natureGreenImageDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description:Green nature."
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/natureGreenImageName" />
+
+<!--  Image 4  and  its Description-->
+    <ImageView
+        android:id="@+id/liveTree"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/livetree"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toEndOf="@id/natureGreenImage"
+        app:layout_constraintTop_toBottomOf="@id/studyingGirlDescription" />
+
+    <TextView
+        android:id="@+id/liveTreeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:text="Anime Tree"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@id/natureGreenImageName"
+        app:layout_constraintTop_toBottomOf="@id/liveTree" />
+
+    <TextView
+        android:id="@+id/liveTreeDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="10dp"
+        android:text="Description:Valaadmi anime tree"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@id/natureGreenImageDescription"
+        app:layout_constraintTop_toBottomOf="@id/liveTreeName" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

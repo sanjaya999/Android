@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-  
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/contact"
+        android:icon="@drawable/ic_contact"
+
+        android:title="contact"/>
+
+    <item android:id="@+id/ic"
+        android:icon="@drawable/ic"
+        android:title="message"/>
+
+    <item android:id="@+id/home"
+        android:icon="@drawable/home"
+        app:showAsAction="always"
+        android:title="Home"/>
+
 </menu>

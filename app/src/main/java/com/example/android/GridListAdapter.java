@@ -10,12 +10,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ListAdapter extends BaseAdapter {
+public class GridListAdapter extends BaseAdapter {
 
     private ArrayList<Product>  productList = new ArrayList<>();
     private Context context;
 
-    public ListAdapter(ArrayList<Product> productList, Context context) {
+    public GridListAdapter(ArrayList<Product> productList, Context context) {
         this.productList = productList; // Assign the passed list directly
         this.context = context;
     }
@@ -38,7 +38,7 @@ public class ListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View converView, ViewGroup viewGroup) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.adapter_list_item , null);
+        View view = inflater.inflate(R.layout.adapter_grid_item , null);
         ProductViewHolder productViewHolder = new ProductViewHolder(view);
         productViewHolder.textProductName.setText(productList.get(position).getName());
         productViewHolder.txtProductPrice.setText(String.valueOf(productList.get(position).getPrice()));

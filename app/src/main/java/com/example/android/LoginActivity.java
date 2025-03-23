@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this , "Password cannot be empty" , Toast.LENGTH_SHORT).show();
 
                 }else{
-                    Intent intent1 = new Intent(LoginActivity.this , ProductGridActivity.class);
+                    Intent intent1 = new Intent(LoginActivity.this , ProductRecyclerViewActivity.class);
                     startActivity(intent1);
                     finish();
 

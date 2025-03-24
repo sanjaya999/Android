@@ -37,7 +37,8 @@ public class ProductRecyclerViewActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this , LinearLayoutManager.HORIZONTAL , false);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this , 2);
         recyclerView.setLayoutManager(gridLayoutManager
-        +);
+
+        );
         recyclerView.setAdapter(adapter);
 
     }

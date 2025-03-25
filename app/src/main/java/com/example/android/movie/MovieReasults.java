@@ -9,56 +9,56 @@ public class MovieReasults {
 
     @SerializedName("adult")
     @Expose
-    private boolean adult;
+     boolean adult;
 
     @SerializedName("backdrop_path")
     @Expose
-    private String backdropPath;
+     String backdropPath;
 
     @SerializedName("genre_ids")
     @Expose
-    private ArrayList<Integer> genreId;
+     ArrayList<Integer> genreId;
 
     @SerializedName("id")
     @Expose
-    private int id;
+     int id;
 
     @SerializedName("original_title")
     @Expose
-    private String originalTitle;
+     String originalTitle;
 
     @SerializedName("overview")
     @Expose
-    private String overview;
+     String overview;
 
     @SerializedName("popularity")
     @Expose
-    private double popularity;
+     double popularity;
 
     @SerializedName("poster_path")
     @Expose
-    private String posterPath;
+     String posterPath;
 
     @SerializedName("release_Date")
     @Expose
-    private String releaseDate ;
+     String releaseDate ;
 
     @SerializedName("title")
     @Expose
-    private String title;
+     String title;
 
 
     @SerializedName("video")
     @Expose
-    private boolean video;
+     boolean video;
 
     @SerializedName("vote_average")
     @Expose
-    private float voteAverage;
+     float voteAverage;
 
     @SerializedName("voter_count")
     @Expose
-    private int voteCount;
+     int voteCount;
 
 
     public boolean isAdult() {

@@ -8,22 +8,23 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.android.movie.MovieResults;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductVH> {
 
 
-    private ArrayList<Product> productList = new ArrayList<>();
+    private ArrayList<MovieResults> movieResults = new ArrayList<>();
     private Context mContext;
 
 
-    public ProductAdapter(ArrayList<Product> dataList, Context mContext){
-//        productList.clear();
-//        productList.addAll(dataList);
-//        mContext = mContext;
-        this.productList = dataList;
-        this.mContext = mContext;
+    public ProductAdapter(ArrayList<MovieResults> dataList, Context context){
+//        movieResults.clear();
+        this.movieResults = dataList;
+        this.mContext = context;
+
 
     }
     @NonNull
@@ -35,15 +36,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductVH> {
 
     @Override
     public void onBindViewHolder(@NonNull ProductVH holder, int position) {
-        holder.textProductName.setText(productList.get(position).getName());
-        holder.txtProductPrice.setText(String.valueOf(productList.get(position).getPrice()));
-        holder.txtProductDescription.setText(productList.get(position).getDescription());
-        holder.imageProduct.setImageDrawable(mContext.getDrawable(productList.get(position).getImage()));
+        holder.textProductName.setText(movieResults.get(position).getTitle());
+        holder.txtProductPrice.setText(String.valueOf(movieResults.get(position).getOverview()));
+        holder.txtProductDescription.setText(movieResults.get(position).getReleaseDate());
+//        holder.imageProduct.setImageDrawable(mContext.getDrawable(movieResults.get(position).getImage()));
+        Picasso.get().load("https://image.tmdb.org/t/p/w500/" + movieResults.get(position).getPosterPath()).into(holder.imageProduct);
     }
 
 
     @Override
     public int getItemCount() {
-        return productList.size();
+        return movieResults.size();
     }
 }

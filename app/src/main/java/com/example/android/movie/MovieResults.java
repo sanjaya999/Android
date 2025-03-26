@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class MovieReasults {
+public class MovieResults {
 
     @SerializedName("adult")
     @Expose
@@ -39,9 +39,9 @@ public class MovieReasults {
     @Expose
      String posterPath;
 
-    @SerializedName("release_Date")
+    @SerializedName("release_date")  // Correct
     @Expose
-     String releaseDate ;
+    String releaseDate;
 
     @SerializedName("title")
     @Expose

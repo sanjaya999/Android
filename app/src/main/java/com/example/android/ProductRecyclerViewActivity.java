@@ -122,6 +122,7 @@ public class ProductRecyclerViewActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                     progressDialog.dismiss();
+
                     if (response.isSuccessful()) {
                         String jsonObject = response.body().string();
                         Gson gsonObject = new Gson();

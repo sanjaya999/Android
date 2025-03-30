@@ -3,7 +3,8 @@ package com.example.android.movie;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+import java.util.ArrayList;
+
 
 public class movieContainer {
 
@@ -13,7 +14,7 @@ public class movieContainer {
 
     @SerializedName("results")
     @Expose
-    List<MovieResults> resultList;
+    ArrayList<MovieResults> resultList;
 
     public int getPage() {
         return page;
@@ -23,11 +24,11 @@ public class movieContainer {
         this.page = page;
     }
 
-    public List<MovieResults> getResultList() {
+    public ArrayList<MovieResults> getResultList() {
         return resultList;
     }
 
-    public void setResultList(List<MovieResults> resultList) {
+    public void setResultList(ArrayList<MovieResults> resultList) {
         this.resultList = resultList;
     }
 }

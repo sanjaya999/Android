@@ -43,6 +43,7 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 
     implementation(libs.converter.gson)
+    implementation(libs.recyclerview)
     implementation(libs.gson.v289)
     implementation(libs.picasso)
     implementation(libs.okhttp)

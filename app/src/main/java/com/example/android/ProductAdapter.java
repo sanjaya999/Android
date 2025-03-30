@@ -21,8 +21,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductVH> {
 
 
     public ProductAdapter(ArrayList<MovieResults> dataList, Context context){
-//        movieResults.clear();
-        this.movieResults = dataList;
+        movieResults.clear();
+        movieResults.addAll(dataList);
         this.mContext = context;
 
 

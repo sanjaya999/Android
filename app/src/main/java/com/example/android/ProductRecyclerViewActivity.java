@@ -19,6 +19,7 @@ import com.example.android.movie.movieContainer;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import okhttp3.Call;
@@ -27,24 +28,21 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class ProductRecyclerViewActivity extends AppCompatActivity {
 
+public class ProductRecyclerViewActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private RecyclerView recyclerView;
     private ProductAdapter adapter;
-    private ArrayList<Product> productList = new ArrayList<>();
-
+    private ArrayList<Product> productlist = new ArrayList<>();
     private movieContainer movieData;
-    private ArrayList<MovieResults> movieResultList = new ArrayList<>();
-
-
+    private ArrayList<MovieResults> movieReasultlist = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_recycler_view);
-        initToolbar();
-        JSONAsyncTask jsonAsyncTask = new JSONAsyncTask();
+        ftoolbar();
+        JsonAsyncTask jsonAsyncTask = new JsonAsyncTask();
         jsonAsyncTask.execute();
         final Handler handler = new Handler(Looper.getMainLooper());
         handler.postDelayed(new Runnable() {
@@ -52,64 +50,58 @@ public class ProductRecyclerViewActivity extends AppCompatActivity {
             public void run() {
                 findView();
             }
-        },5000 );
-
+        }, 5000);
     }
-    private void findView(){
+
+    private void findView() {
         recyclerView = findViewById(R.id.recyclerView);
-
+        adapter = new ProductAdapter(movieReasultlist, ProductRecyclerViewActivity.this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(ProductRecyclerViewActivity.this, LinearLayoutManager.VERTICAL, false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(ProductRecyclerViewActivity.this, 2);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
 
     }
-    private void initToolbar() {
+
+    private void ftoolbar() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("List View");
+        getSupportActionBar().setTitle("Recycle view");
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    private void setProductData() {
-        Product p1 = new Product();
-        Product p2 = new Product();
-        Product p3 = new Product();
-        Product p4 = new Product();
-        p1.setName("Subarna");
-        p1.setDescription("Male");
-        p1.setPrice(200);
-        p1.setImage(R.drawable.girlstudy);
-
-        p2.setName("ruzin");
-        p2.setDescription("male");
-        p2.setPrice(150);
-        p2.setImage(R.drawable.home);
-
-        p3.setName("samip");
-        p3.setDescription("male");
-        p3.setPrice(100);
-        p3.setImage(R.drawable.nature);
-
-        p4.setName("utshav");
-        p4.setDescription("male");
-        p4.setPrice(50);
-        p4.setImage(R.drawable.tree);
-
-        productList.add(p1);
-        productList.add(p2);
-        productList.add(p3);
-        productList.add(p4);
-
-
-    }
-
-    class JSONAsyncTask extends AsyncTask<Void , Void , Boolean >{
-
+    //    private void setproductdata(){
+//        Product p1 = new Product();
+//        Product p2 = new Product();
+//        Product p3 = new Product();
+//        Product p4 = new Product();
+//        p1.setName("Discord");
+//        p1.setDescription("this is discord");
+//        p1.setPrice(100);
+//        p1.setImage(R.drawable.discord);
+//        p2.setName("Bluetooth");
+//        p2.setDescription("this is bluetooth");
+//        p2.setPrice(13400);
+//        p2.setImage(R.drawable.bluetooth);
+//        p3.setName("android");
+//        p3.setDescription("this is android");
+//        p3.setPrice(1200);
+//        p3.setImage(R.drawable.android);
+//        p4.setName("comment");
+//        p4.setDescription("this is comment");
+//        p4.setPrice(1400);
+//        p4.setImage(R.drawable.comment);
+//        productlist.add(p1);
+//        productlist.add(p2);
+//        productlist.add(p3);
+//        productlist.add(p4);
+//    }
+    class JsonAsyncTask extends AsyncTask<Void, Void, Boolean> {
         ProgressDialog progressDialog = new ProgressDialog(ProductRecyclerViewActivity.this);
 
-
-
-        @Override
-        protected void  onPreExecute() {
-            progressDialog.setMessage("Loading...");
+        protected void onPreExecute() {
+            progressDialog.setMessage("Please wait");
             progressDialog.setCancelable(false);
             progressDialog.setIndeterminate(false);
             progressDialog.show();
@@ -119,43 +111,33 @@ public class ProductRecyclerViewActivity extends AppCompatActivity {
         @Override
         protected Boolean doInBackground(Void... voids) {
             OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder().url("https://api.themoviedb.org/3/movie/upcoming?api_key=ef8f48b43832a9e95b87408bf739ed51").build();
-
+            Request request = new Request.Builder().url("http://api.themoviedb.org/3/movie/upcoming?api_key=ef8f48b43832a9e95b87408bf739ed51").build();
             client.newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                    Log.d("error" , String.valueOf(e.getLocalizedMessage()));
+                    progressDialog.dismiss();
+                    Log.d("Error", String.valueOf(e.getMessage()));
                 }
 
                 @Override
                 public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                     progressDialog.dismiss();
-                    if(response.isSuccessful()){
+                    if (response.isSuccessful()) {
                         String jsonObject = response.body().string();
                         Gson gsonObject = new Gson();
-                        movieData = gsonObject.fromJson(jsonObject , movieContainer.class);
-                        movieResultList.clear();
-                        movieResultList.addAll(movieData.getResultList());
-                        adapter = new ProductAdapter(movieResultList , ProductRecyclerViewActivity.this);
-                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ProductRecyclerViewActivity.this , LinearLayoutManager.HORIZONTAL , false);
-                        GridLayoutManager gridLayoutManager = new GridLayoutManager(ProductRecyclerViewActivity.this , 2);
-                        recyclerView.setLayoutManager(linearLayoutManager
+                        movieData = gsonObject.fromJson(jsonObject, movieContainer.class);
+                        movieReasultlist.clear();
+                        movieReasultlist.addAll(movieData.getResultList());
 
-                        );
-                        recyclerView.setAdapter(adapter);
                     }
                 }
             });
-
             return null;
         }
 
         @Override
         protected void onPostExecute(Boolean aBoolean) {
-
             super.onPostExecute(aBoolean);
         }
-
     }
-
 }

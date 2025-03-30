@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/name"
+        android:id="@+id/gname"
         android:text="Miyamoto mushashi"
         app:layout_constraintTop_toBottomOf="@id/image"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,17 +26,17 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/description"
+        android:id="@+id/gdescription"
         android:text="Product Description"
-        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintTop_toBottomOf="@id/gname"
         app:layout_constraintStart_toStartOf="parent"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/price"
+        android:id="@+id/gprice"
         android:text="Product Price"
-        app:layout_constraintTop_toBottomOf="@id/description"
+        app:layout_constraintTop_toBottomOf="@id/gdescription"
         app:layout_constraintStart_toStartOf="parent"
         />
 

@@ -131,6 +131,7 @@ public class ProductRecyclerViewActivity extends AppCompatActivity {
                         String jsonObject = response.body().string();
                         Gson gsonObject = new Gson();
 
+
                         movieData = gsonObject.fromJson(jsonObject, movieContainer.class);
                         movieReasultlist.clear();
                         movieReasultlist.addAll(movieData.getResultList());

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.android.database.DBHandler;
 import com.example.android.movie.MovieResults;
 import com.example.android.movie.movieContainer;
 import com.google.gson.Gson;
@@ -37,12 +38,15 @@ public class ProductRecyclerViewActivity extends AppCompatActivity {
     private movieContainer movieData;
     private ArrayList<MovieResults> movieReasultlist = new ArrayList<>();
 
+    private DBHandler dbHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_recycler_view);
         ftoolbar();
         JsonAsyncTask jsonAsyncTask = new JsonAsyncTask();
+        dbHandler = new DBHandler(this);
         jsonAsyncTask.execute();
         final Handler handler = new Handler(Looper.getMainLooper());
         handler.postDelayed(new Runnable() {
@@ -126,10 +130,13 @@ public class ProductRecyclerViewActivity extends AppCompatActivity {
                     if (response.isSuccessful()) {
                         String jsonObject = response.body().string();
                         Gson gsonObject = new Gson();
+
                         movieData = gsonObject.fromJson(jsonObject, movieContainer.class);
                         movieReasultlist.clear();
                         movieReasultlist.addAll(movieData.getResultList());
-
+                        for(int i = 0; i <  movieData.getResultList().size() ; i++){
+                            dbHandler.addNewMovie(movieData.getResultList().get(i).getTitle() , movieData.getResultList().get(i).getOverview() , movieData.getResultList().get(i).getReleaseDate(), movieData.getResultList().get(i).getPosterPath());
+                        }
                     }
                 }
             });

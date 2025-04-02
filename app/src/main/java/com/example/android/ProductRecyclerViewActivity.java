@@ -135,6 +135,8 @@ public class ProductRecyclerViewActivity extends AppCompatActivity {
                         movieData = gsonObject.fromJson(jsonObject, movieContainer.class);
                         movieReasultlist.clear();
                         movieReasultlist.addAll(movieData.getResultList());
+
+                        dbHandler.deleteData();
                         for(int i = 0; i <  movieData.getResultList().size() ; i++){
                             dbHandler.addNewMovie(movieData.getResultList().get(i).getTitle() , movieData.getResultList().get(i).getOverview() , movieData.getResultList().get(i).getReleaseDate(), movieData.getResultList().get(i).getPosterPath());
                         }

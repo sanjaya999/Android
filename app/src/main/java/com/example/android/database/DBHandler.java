@@ -102,6 +102,13 @@ public class DBHandler extends SQLiteOpenHelper {
         return resultsData;
     }
 
+    public  void deleteData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + TABLE_NAME);
+        db.close();
+
+    }
+
     // this method is use to add new course to our sqlite database.
     public void addNewMovie(String Name, String Description, String ReleaseDate, String PosterPath) {
 
@@ -133,7 +140,7 @@ public class DBHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // this method is called to check if the table exists already.
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        db.execSQL("DELETE FROM " + TABLE_NAME);
         onCreate(db);
     }
 }
